@@ -24,3 +24,7 @@ jobs:
       - name: Run linter
         run: |
           make lint
+      - name: Run tests
+        run: |
+          pip install -U pytest
+          make test
