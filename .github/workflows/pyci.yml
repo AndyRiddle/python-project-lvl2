@@ -28,3 +28,10 @@ jobs:
         run: |
           pip install -U pytest
           make test
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v2.7.5
+        env:
+          CC_TEST_REPORTER_ID: <4884a36e301faeb570dbb45b4a0d3e22c1d28285aca0268a872b2edc2baca81e>
+        with:
+          coverageCommand: make coverage
+          debug: true

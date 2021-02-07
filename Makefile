@@ -7,4 +7,7 @@ lint:
 test:
 	pytest
 
-.PHONY: install lint test
+coverage:
+	pytest --cov-report term --cov=tests
+
+.PHONY: install lint test coverage
