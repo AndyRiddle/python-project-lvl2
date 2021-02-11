@@ -8,6 +8,6 @@ test:
 	poetry run pytest
 
 coverage:
-	poetry run pytest --cov-report term --cov=gendiff
+	poetry run pytest --cov=gendiff --cov-report xml tests/
 
 .PHONY: install lint test coverage
