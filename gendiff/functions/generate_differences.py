@@ -15,8 +15,8 @@ def generate_diff(file1, file2):
         determine_type_of_file(file2),
     )
 
-    file_changes = identify_and_save_differences(
+    file_changes, recursively = identify_and_save_differences(
         data_of_file1, data_of_file2,
     )
 
-    return output_diff(file_changes)
+    return output_diff(file_changes, recursively)
