@@ -28,6 +28,26 @@ def output_unchanged_dict(dictionary, counter):
     return '\n'.join(style_for_output)
 
 
+def generate_changes_for_output(changes, key, counter):
+    for_output = []
+    for operation, value_for_key in changes.items():
+        if isinstance(value_for_key, dict):
+            for_output.append('{0}  {1} {2}: {3}'.format(
+                INDENT * (counter - 1),
+                operation,
+                key,
+                output_unchanged_dict(value_for_key, counter),
+            ))
+        else:
+            for_output.append('{0}  {1} {2}: {3}'.format(
+                INDENT * (counter - 1),
+                operation,
+                key,
+                format_value(value_for_key),
+            ))
+    return '\n'.join(for_output)
+
+
 def output_diff(changes, recursively, counter=1):
     for_output = ['{']
     sorted_keys = sorted(recursively.keys())
@@ -40,20 +60,9 @@ def output_diff(changes, recursively, counter=1):
                 ),
             ))
         else:
-            for operation, value_for_key in changes[key].items():
-                if isinstance(value_for_key, dict):
-                    for_output.append('{0}  {1} {2}: {3}'.format(
-                        INDENT * (counter - 1),
-                        operation,
-                        key,
-                        output_unchanged_dict(value_for_key, counter),
-                    ))
-                else:
-                    for_output.append('{0}  {1} {2}: {3}'.format(
-                        INDENT * (counter - 1),
-                        operation,
-                        key,
-                        format_value(value_for_key),
-                    ))
+            for_output.append(generate_changes_for_output(
+                changes[key], key, counter,
+            ))
+
     for_output.append(''.join([INDENT * (counter - 1), '}']))
     return '\n'.join(for_output)

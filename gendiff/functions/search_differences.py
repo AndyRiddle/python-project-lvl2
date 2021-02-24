@@ -1,3 +1,14 @@
+def spot_differences(data_file1, data_file2):
+    if data_file1 == data_file2:
+        return {' ': data_file1}, {}
+    elif isinstance(data_file1, dict) and isinstance(data_file2, dict):
+        return identify_and_save_differences(
+            data_file1,
+            data_file2,
+        )
+    return {'-': data_file1, '+': data_file2}, {}
+
+
 def identify_and_save_differences(data_of_file1, data_of_file2):
     changes = {}
     all_keys = data_of_file1.keys() | data_of_file2.keys()
@@ -6,21 +17,17 @@ def identify_and_save_differences(data_of_file1, data_of_file2):
     for key in all_keys:
         if key not in data_of_file2:
             value_for_key = {'-': data_of_file1[key]}
-            recursively[key] = {}
+            for_recursively = {}
         elif key not in data_of_file1:
             value_for_key = {'+': data_of_file2[key]}
-            recursively[key] = {}
-        elif data_of_file1[key] == data_of_file2[key]:
-            value_for_key = {' ': data_of_file1[key]}
-            recursively[key] = {}
-        elif isinstance(data_of_file1[key], dict) and isinstance(data_of_file2[key], dict):
-            value_for_key, for_recursively = identify_and_save_differences(
+            for_recursively = {}
+        else:
+            value_for_key, for_recursively = spot_differences(
                 data_of_file1[key],
                 data_of_file2[key],
             )
-            recursively[key] = for_recursively
-        else:
-            value_for_key = {'-': data_of_file1[key], '+': data_of_file2[key]}
-            recursively[key] = {}
+
+        recursively[key] = for_recursively
         changes[key] = value_for_key
+
     return changes, recursively
