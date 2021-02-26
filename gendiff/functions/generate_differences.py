@@ -1,6 +1,7 @@
+from gendiff.formaters.plain import output_diff_plain
+from gendiff.formaters.stylish import output_diff_stylish
 from gendiff.functions.determine_file_type import determine_type_of_file
 from gendiff.functions.open_file import get_data_from_file
-from gendiff.functions.output_differences import output_diff
 from gendiff.functions.search_differences import identify_and_save_differences
 
 
@@ -20,4 +21,5 @@ def generate_diff(file1, file2, formater):
     )
 
     if formater == 'stylish':
-        return output_diff(file_changes, recursively)
+        return output_diff_stylish(file_changes, recursively)
+    return output_diff_plain(file_changes, recursively)

@@ -48,14 +48,14 @@ def generate_changes_for_output(changes, key, counter):
     return '\n'.join(for_output)
 
 
-def output_diff(changes, recursively, counter=1):
+def output_diff_stylish(changes, recursively, counter=1):
     for_output = ['{']
     sorted_keys = sorted(recursively.keys())
 
     for key in sorted_keys:
         if recursively[key]:
             for_output.append('{0}{1}: {2}'.format(
-                INDENT * counter, key, output_diff(
+                INDENT * counter, key, output_diff_stylish(
                     changes[key], recursively[key], counter + 1,
                 ),
             ))
