@@ -1,3 +1,4 @@
+from gendiff.formaters.json import output_diff_json
 from gendiff.formaters.plain import output_diff_plain
 from gendiff.formaters.stylish import output_diff_stylish
 from gendiff.functions.determine_file_type import determine_type_of_file
@@ -20,6 +21,8 @@ def generate_diff(file1, file2, formater):
         data_of_file1, data_of_file2,
     )
 
-    if formater == 'stylish':
-        return output_diff_stylish(file_changes, recursively)
-    return output_diff_plain(file_changes, recursively)
+    if formater == 'plain':
+        return output_diff_plain(file_changes, recursively)
+    elif formater == 'json':
+        return output_diff_json(file_changes, recursively)
+    return output_diff_stylish(file_changes, recursively)
