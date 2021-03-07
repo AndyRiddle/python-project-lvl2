@@ -1,12 +1,12 @@
-def spot_differences(data_file1, data_file2):
-    if data_file1 == data_file2:
-        return {' ': data_file1}, {}
-    elif isinstance(data_file1, dict) and isinstance(data_file2, dict):
+def determine_differences(data_of_file1, data_of_file2):
+    if data_of_file1 == data_of_file2:
+        return {' ': data_of_file1}, {}
+    elif isinstance(data_of_file1, dict) and isinstance(data_of_file2, dict):
         return identify_and_save_differences(
-            data_file1,
-            data_file2,
+            data_of_file1,
+            data_of_file2,
         )
-    return {'-': data_file1, '+': data_file2}, {}
+    return {'-': data_of_file1, '+': data_of_file2}, {}
 
 
 def identify_and_save_differences(data_of_file1, data_of_file2):
@@ -22,7 +22,7 @@ def identify_and_save_differences(data_of_file1, data_of_file2):
             value_for_key = {'+': data_of_file2[key]}
             for_recursively = {}
         else:
-            value_for_key, for_recursively = spot_differences(
+            value_for_key, for_recursively = determine_differences(
                 data_of_file1[key],
                 data_of_file2[key],
             )

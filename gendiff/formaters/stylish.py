@@ -11,36 +11,40 @@ def format_value(value_for_output):
     return value_for_output
 
 
-def output_unchanged_dict(dictionary, counter):
-    style_for_output = ['{']
+def output_unchanged_dict(dictionary, nesting_counter):
+    format_for_output = ['{']
     for key, value_for_key in dictionary.items():
         if isinstance(value_for_key, dict):
-            style_for_output.append('{0}{1}: {2}'.format(
-                INDENT * (counter + 1),
+            format_for_output.append('{0}{1}: {2}'.format(
+                INDENT * (nesting_counter + 1),
                 key,
-                output_unchanged_dict(value_for_key, counter + 1),
+                output_unchanged_dict(value_for_key, nesting_counter + 1),
             ))
         else:
-            style_for_output.append('{0}{1}: {2}'.format(
-                INDENT * (counter + 1), key, format_value(value_for_key),
-            ))
-    style_for_output.append(''.join([INDENT * counter, '}']))
-    return '\n'.join(style_for_output)
+            format_for_output.append(
+                '{0}{1}: {2}'.format(
+                    INDENT * (nesting_counter + 1),
+                    key,
+                    format_value(value_for_key),
+                ),
+            )
+    format_for_output.append(''.join([INDENT * nesting_counter, '}']))
+    return '\n'.join(format_for_output)
 
 
-def generate_changes_for_output(changes, key, counter):
+def generate_changes_for_output(changes, key, nesting_counter):
     for_output = []
     for operation, value_for_key in changes.items():
         if isinstance(value_for_key, dict):
             for_output.append('{0}  {1} {2}: {3}'.format(
-                INDENT * (counter - 1),
+                INDENT * (nesting_counter - 1),
                 operation,
                 key,
-                output_unchanged_dict(value_for_key, counter),
+                output_unchanged_dict(value_for_key, nesting_counter),
             ))
         else:
             for_output.append('{0}  {1} {2}: {3}'.format(
-                INDENT * (counter - 1),
+                INDENT * (nesting_counter - 1),
                 operation,
                 key,
                 format_value(value_for_key),
@@ -48,21 +52,21 @@ def generate_changes_for_output(changes, key, counter):
     return '\n'.join(for_output)
 
 
-def output_diff_stylish(changes, recursively, counter=1):
+def output_diff_stylish(changes, recursively, nesting_counter=1):
     for_output = ['{']
     sorted_keys = sorted(recursively.keys())
 
     for key in sorted_keys:
         if recursively[key]:
             for_output.append('{0}{1}: {2}'.format(
-                INDENT * counter, key, output_diff_stylish(
-                    changes[key], recursively[key], counter + 1,
+                INDENT * nesting_counter, key, output_diff_stylish(
+                    changes[key], recursively[key], nesting_counter + 1,
                 ),
             ))
         else:
             for_output.append(generate_changes_for_output(
-                changes[key], key, counter,
+                changes[key], key, nesting_counter,
             ))
 
-    for_output.append(''.join([INDENT * (counter - 1), '}']))
+    for_output.append(''.join([INDENT * (nesting_counter - 1), '}']))
     return '\n'.join(for_output)

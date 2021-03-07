@@ -4,3 +4,33 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
 [![Github Actions Status](https://github.com/AndyRiddle/python-project-lvl2/workflows/Python%20CI/badge.svg)](https://github.com/AndyRiddle/python-project-lvl2/actions)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a6207f0f2cce4d4cbb53/test_coverage)](https://codeclimate.com/github/AndyRiddle/python-project-lvl2/test_coverage)
+
+## Description
+Package compares two configuration files in JSON or YAML format.
+
+## Installation
+Clone the repository:
+```bash
+git clone git@github.com:AndyRiddle/python-project-lvl2.git
+```
+Run from the root directory of the project command:
+```bash
+make package-install
+```
+python-project-lvl2
+#### Installation example:
+[![asciicast](https://asciinema.org/a/hdjzasnWhbOFdcwRnlDTkpalL.png)](https://asciinema.org/a/hdjzasnWhbOFdcwRnlDTkpalL?autoplay=1)
+
+## Option
+- `--help (-h)` : Display help information.
+- `--format (-f)` : Format of output (default=`stylish`, other supported formats: `plain`, `json`).
+
+#### Example usage `--help`:
+[![asciicast](https://asciinema.org/a/tkLvXcsgJRQZlP3L8BvKeiugF.png)](https://asciinema.org/a/tkLvXcsgJRQZlP3L8BvKeiugF?autoplay=1)
+
+## Usage
+####
+[![asciicast](https://asciinema.org/a/9Dz0HwPSEdovpE7fRTR3DB1zu.png)](https://asciinema.org/a/9Dz0HwPSEdovpE7fRTR3DB1zu?autoplay=1)
+####
+[![asciicast](https://asciinema.org/a/KuHoou8bCyDUktqemXNwUIvTq.png)](https://asciinema.org/a/KuHoou8bCyDUktqemXNwUIvTq?autoplay=1)
+

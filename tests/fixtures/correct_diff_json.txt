@@ -1,58 +1,58 @@
 {
     "common": {
         "follow": {
-            "Value was added": false
+            "+": false
         },
         "setting1": {
             " ": "Value 1"
         },
         "setting2": {
-            "Implication was removed": 200
+            "-": 200
         },
         "setting3": {
-            "Implication was removed": true,
-            "Value was added": null
+            "+": null,
+            "-": true
         },
         "setting4": {
-            "Value was added": "blah blah"
+            "+": "blah blah"
         },
         "setting5": {
-            "Value was added": {
+            "+": {
                 "key5": "value5"
             }
         },
         "setting6": {
             "doge": {
                 "wow": {
-                    "Implication was removed": "",
-                    "Value was added": "so much"
+                    "+": "so much",
+                    "-": ""
                 }
             },
             "key": {
                 " ": "value"
             },
             "ops": {
-                "Value was added": "vops"
+                "+": "vops"
             }
         }
     },
     "group1": {
         "baz": {
-            "Implication was removed": "bas",
-            "Value was added": "bars"
+            "+": "bars",
+            "-": "bas"
         },
         "foo": {
             " ": "bar"
         },
         "nest": {
-            "Implication was removed": {
+            "+": "str",
+            "-": {
                 "key": "value"
-            },
-            "Value was added": "str"
+            }
         }
     },
     "group2": {
-        "Implication was removed": {
+        "-": {
             "abc": 12345,
             "deep": {
                 "id": 45
@@ -60,7 +60,7 @@
         }
     },
     "group3": {
-        "Value was added": {
+        "+": {
             "deep": {
                 "id": {
                     "number": 45
