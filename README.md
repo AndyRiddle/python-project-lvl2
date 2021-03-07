@@ -17,7 +17,7 @@ Run from the root directory of the project command:
 ```bash
 make package-install
 ```
-python-project-lvl2
+cd python-project-lvl2
 #### Installation example:
 [![asciicast](https://asciinema.org/a/hdjzasnWhbOFdcwRnlDTkpalL.png)](https://asciinema.org/a/hdjzasnWhbOFdcwRnlDTkpalL?autoplay=1)
 
