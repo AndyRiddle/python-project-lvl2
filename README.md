@@ -13,13 +13,12 @@ Clone the repository:
 ```bash
 git clone git@github.com:AndyRiddle/python-project-lvl2.git
 ```
-Run from the root directory of the project command:
+Run from the root directory of the project commands:
 ```bash
+make build
+make publish
 make package-install
 ```
-cd python-project-lvl2
-#### Installation example:
-[![asciicast](https://asciinema.org/a/hdjzasnWhbOFdcwRnlDTkpalL.png)](https://asciinema.org/a/hdjzasnWhbOFdcwRnlDTkpalL?autoplay=1)
 
 ## Option
 - `--help (-h)` : Display help information.
@@ -29,8 +28,10 @@ cd python-project-lvl2
 [![asciicast](https://asciinema.org/a/tkLvXcsgJRQZlP3L8BvKeiugF.png)](https://asciinema.org/a/tkLvXcsgJRQZlP3L8BvKeiugF?autoplay=1)
 
 ## Usage
-####
+#### Example run `gendiff` for JSON files wiht output in `stylish` format:
 [![asciicast](https://asciinema.org/a/9Dz0HwPSEdovpE7fRTR3DB1zu.png)](https://asciinema.org/a/9Dz0HwPSEdovpE7fRTR3DB1zu?autoplay=1)
-####
+#### Example run `gendiff` for YAML files wiht output in `plain` format:
 [![asciicast](https://asciinema.org/a/KuHoou8bCyDUktqemXNwUIvTq.png)](https://asciinema.org/a/KuHoou8bCyDUktqemXNwUIvTq?autoplay=1)
+#### Example run `gendiff` for JSON files wiht output in `json` format:
+[![asciicast](https://asciinema.org/a/SAdhQYPYPZM2SRDw487Lyp5j7.png)](https://asciinema.org/a/SAdhQYPYPZM2SRDw487Lyp5j7?autoplay=1)
 
