@@ -6,7 +6,7 @@ from gendiff.functions.open_file import get_data_from_file
 from gendiff.functions.search_differences import identify_and_save_differences
 
 
-def generate_diff(file1, file2, formater):
+def generate_diff(file1, file2, formater='stylish'):
 
     data_of_file1 = get_data_from_file(
         file1,
