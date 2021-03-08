@@ -68,7 +68,12 @@ from gendiff import generate_diff
          ),
     ],
 )
-def test_for_gendiff(file_with_correct_diff, old_file, new_file, output_format):
+def test_for_gendiff(
+    file_with_correct_diff,
+    old_file,
+    new_file,
+    output_format,
+):
     with open(
         file_with_correct_diff,
     ) as correct_data:
