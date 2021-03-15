@@ -99,7 +99,7 @@ def generate_line_for_output(
                 '+',
                 key,
                 output_value(
-                    value_key[NEW_VALUE], nesting_counter_for_unchanged,
+                    value_key[NEW_VALUE], nesting_counter,
                 ),
             ),
         )
