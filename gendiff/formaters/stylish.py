@@ -1,16 +1,13 @@
 import json
 
-from gendiff.building_diff.search_differences import (  # isort:skip
-    ADDED_STATUS,
-    CHANGED_STATUS,
-    NEW_VALUE,
-    OLD_VALUE,
-    RECURSIVE_STATUS,
-    REMOVED_STATUS,
-    STATUS_PROPERTY,
-    UNCHANGED_STATUS,
-    VALUE_PROPERTY,
-)
+from gendiff.building_diff.search_differences import (ADDED_STATUS,
+                                                      CHANGED_STATUS,
+                                                      NEW_VALUE, OLD_VALUE,
+                                                      RECURSIVE_STATUS,
+                                                      REMOVED_STATUS,
+                                                      STATUS_PROPERTY,
+                                                      UNCHANGED_STATUS,
+                                                      VALUE_PROPERTY)
 
 INDENT = '    '
 

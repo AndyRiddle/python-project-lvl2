@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hexlet-code"
-version = "0.2.0"
+version = "0.2.1"
 description = "Evaluator differences between the two data structures"
 authors = ["AndyRiddle <kas2850.cuk@yandex.ru>"]
 packages = [
