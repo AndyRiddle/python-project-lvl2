@@ -1,58 +1,91 @@
 {
     "common": {
-        "follow": {
-            "+": false
-        },
-        "setting1": {
-            " ": "Value 1"
-        },
-        "setting2": {
-            "-": 200
-        },
-        "setting3": {
-            "+": null,
-            "-": true
-        },
-        "setting4": {
-            "+": "blah blah"
-        },
-        "setting5": {
-            "+": {
-                "key5": "value5"
-            }
-        },
-        "setting6": {
-            "doge": {
-                "wow": {
-                    "+": "so much",
-                    "-": ""
+        "status_of_key": "recursive",
+        "value_of_key": {
+            "follow": {
+                "status_of_key": "added",
+                "value_of_key": false
+            },
+            "setting1": {
+                "status_of_key": "unchanged",
+                "value_of_key": "Value 1"
+            },
+            "setting2": {
+                "status_of_key": "removed",
+                "value_of_key": 200
+            },
+            "setting3": {
+                "status_of_key": "changed",
+                "value_of_key": {
+                    "new_value": null,
+                    "old_value": true
                 }
             },
-            "key": {
-                " ": "value"
+            "setting4": {
+                "status_of_key": "added",
+                "value_of_key": "blah blah"
             },
-            "ops": {
-                "+": "vops"
+            "setting5": {
+                "status_of_key": "added",
+                "value_of_key": {
+                    "key5": "value5"
+                }
+            },
+            "setting6": {
+                "status_of_key": "recursive",
+                "value_of_key": {
+                    "doge": {
+                        "status_of_key": "recursive",
+                        "value_of_key": {
+                            "wow": {
+                                "status_of_key": "changed",
+                                "value_of_key": {
+                                    "new_value": "so much",
+                                    "old_value": ""
+                                }
+                            }
+                        }
+                    },
+                    "key": {
+                        "status_of_key": "unchanged",
+                        "value_of_key": "value"
+                    },
+                    "ops": {
+                        "status_of_key": "added",
+                        "value_of_key": "vops"
+                    }
+                }
             }
         }
     },
     "group1": {
-        "baz": {
-            "+": "bars",
-            "-": "bas"
-        },
-        "foo": {
-            " ": "bar"
-        },
-        "nest": {
-            "+": "str",
-            "-": {
-                "key": "value"
+        "status_of_key": "recursive",
+        "value_of_key": {
+            "baz": {
+                "status_of_key": "changed",
+                "value_of_key": {
+                    "new_value": "bars",
+                    "old_value": "bas"
+                }
+            },
+            "foo": {
+                "status_of_key": "unchanged",
+                "value_of_key": "bar"
+            },
+            "nest": {
+                "status_of_key": "changed",
+                "value_of_key": {
+                    "new_value": "str",
+                    "old_value": {
+                        "key": "value"
+                    }
+                }
             }
         }
     },
     "group2": {
-        "-": {
+        "status_of_key": "removed",
+        "value_of_key": {
             "abc": 12345,
             "deep": {
                 "id": 45
@@ -60,7 +93,8 @@
         }
     },
     "group3": {
-        "+": {
+        "status_of_key": "added",
+        "value_of_key": {
             "deep": {
                 "id": {
                     "number": 45

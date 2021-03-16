@@ -1,68 +1,60 @@
-def format_value(value_for_output):
-    if value_for_output is None:
-        value_for_output = 'null'
-    elif isinstance(value_for_output, bool):
-        value_for_output = str(value_for_output)
-        value_for_output = value_for_output.lower()
-    elif isinstance(value_for_output, str):
-        value_for_output = "'{0}'".format(value_for_output)
-    return value_for_output
+import json
+
+from gendiff.building_diff.search_differences import (ADDED_STATUS,
+                                                      CHANGED_STATUS,
+                                                      NEW_VALUE, OLD_VALUE,
+                                                      RECURSIVE_STATUS,
+                                                      REMOVED_STATUS,
+                                                      STATUS_PROPERTY,
+                                                      UNCHANGED_STATUS,
+                                                      VALUE_PROPERTY)
 
 
-def get_values(changes, operation):
-    if isinstance(changes[operation], (list, tuple, dict, set)):
+def get_values(value_for_key):
+    if isinstance(value_for_key, (list, tuple, dict, set)):
         return '[complex value]'
-    return format_value(changes[operation])
-
-
-def generate_lines_for_output(changes, key, path):
-
-    if ' ' in changes.keys():
-        return None
-
-    if '+' in changes.keys():
-        added_value = get_values(changes, '+')
-    else:
-        return "Property '{0}' was removed".format(path)
-
-    if '-' in changes.keys():
-        removed_value = get_values(changes, '-')
-    else:
-        return "Property '{0}' was added with value: {1}".format(
-            path,
-            added_value,
-        )
-
-    return "Property '{0}' was updated. From {1} to {2}".format(
-        path,
-        removed_value,
-        added_value,
-    )
+    elif isinstance(value_for_key, str):
+        return "'{0}'".format(value_for_key)
+    return json.dumps(value_for_key)
 
 
 def generate_path_to_key(path, key):
     if path == '':
         return key
-    return '.'.join([path, key])
+    return '{0}.{1}'.format(path, key)
 
 
-def output_diff_plain(changes, recursively, path=''):
+def generate_line_for_output(status_key, value_key, new_path):
+    if status_key == ADDED_STATUS:
+        return "Property '{0}' was added with value: {1}".format(
+            new_path,
+            get_values(value_key),
+        )
+    elif status_key == REMOVED_STATUS:
+        return "Property '{0}' was removed".format(new_path)
+    elif status_key == CHANGED_STATUS:
+        return "Property '{0}' was updated. From {1} to {2}".format(
+            new_path,
+            get_values(value_key[OLD_VALUE]),
+            get_values(value_key[NEW_VALUE]),
+        )
+    elif status_key == RECURSIVE_STATUS:
+        return output_diff_plain(value_key, new_path)
+
+
+def output_diff_plain(changes, path=''):
     for_output = []
-    sorted_keys = sorted(recursively.keys())
+    sorted_keys = sorted(changes.keys())
 
     for key in sorted_keys:
-        new_path = generate_path_to_key(path, key)
-        if recursively[key]:
-            for_output.append(output_diff_plain(
-                changes[key],
-                recursively[key],
-                new_path,
-            ))
-        else:
-            for_output.append(generate_lines_for_output(
-                changes[key],
-                key,
-                new_path,
-            ))
+        status_key = changes[key].get(STATUS_PROPERTY)
+        value_key = changes[key].get(VALUE_PROPERTY)
+        if status_key is not None and value_key is not None:
+            if status_key != UNCHANGED_STATUS:
+                for_output.append(generate_line_for_output(
+                    status_key,
+                    value_key,
+                    generate_path_to_key(path, key),
+                ))
 
-    return '\n'.join(filter(lambda line: line is not None, for_output))
+    return '\n'.join(for_output)
