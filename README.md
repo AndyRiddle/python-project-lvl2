@@ -33,5 +33,5 @@ make package-install
 #### Example run `gendiff` for YAML files wiht output in `plain` format:
 [![asciicast](https://asciinema.org/a/KuHoou8bCyDUktqemXNwUIvTq.png)](https://asciinema.org/a/KuHoou8bCyDUktqemXNwUIvTq?autoplay=1)
 #### Example run `gendiff` for JSON files wiht output in `json` format:
-[![asciicast](https://asciinema.org/a/SAdhQYPYPZM2SRDw487Lyp5j7.png)](https://asciinema.org/a/SAdhQYPYPZM2SRDw487Lyp5j7?autoplay=1)
+[![asciicast](https://asciinema.org/a/f7Wap5AGJ1dETfHeKQUbdsOH1.png)](https://asciinema.org/a/f7Wap5AGJ1dETfHeKQUbdsOH1?autoplay=1)
 
