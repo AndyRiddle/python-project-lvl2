@@ -1,23 +1,23 @@
-from gendiff.building_diff.open_file import get_data_from_file
+from gendiff.building_diff.get_file_data import get_file_data
 from gendiff.building_diff.search_differences import build_diff
-from gendiff.formaters.identify_formater import identify_formater_and_output
+from gendiff.formatters.format_diff import format_diff
 
 
-def generate_diff(file1, file2, formater='stylish'):
+def generate_diff(file1, file2, formatter='stylish'):
 
-    data_of_file1 = get_data_from_file(
+    data_of_file1 = get_file_data(
         file1,
     )
-    data_of_file2 = get_data_from_file(
+    data_of_file2 = get_file_data(
         file2,
     )
 
-    file_changes = build_diff(
+    diff = build_diff(
         data_of_file1,
         data_of_file2,
     )
 
-    return identify_formater_and_output(
-        formater,
-        file_changes,
+    return format_diff(
+        formatter,
+        diff,
     )

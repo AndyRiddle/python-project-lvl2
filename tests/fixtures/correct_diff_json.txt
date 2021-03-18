@@ -1,45 +1,45 @@
 {
     "common": {
-        "status_of_key": "recursive",
-        "value_of_key": {
+        "status": "recursive",
+        "value": {
             "follow": {
-                "status_of_key": "added",
-                "value_of_key": false
+                "status": "added",
+                "value": false
             },
             "setting1": {
-                "status_of_key": "unchanged",
-                "value_of_key": "Value 1"
+                "status": "unchanged",
+                "value": "Value 1"
             },
             "setting2": {
-                "status_of_key": "removed",
-                "value_of_key": 200
+                "status": "removed",
+                "value": 200
             },
             "setting3": {
-                "status_of_key": "changed",
-                "value_of_key": {
+                "status": "changed",
+                "value": {
                     "new_value": null,
                     "old_value": true
                 }
             },
             "setting4": {
-                "status_of_key": "added",
-                "value_of_key": "blah blah"
+                "status": "added",
+                "value": "blah blah"
             },
             "setting5": {
-                "status_of_key": "added",
-                "value_of_key": {
+                "status": "added",
+                "value": {
                     "key5": "value5"
                 }
             },
             "setting6": {
-                "status_of_key": "recursive",
-                "value_of_key": {
+                "status": "recursive",
+                "value": {
                     "doge": {
-                        "status_of_key": "recursive",
-                        "value_of_key": {
+                        "status": "recursive",
+                        "value": {
                             "wow": {
-                                "status_of_key": "changed",
-                                "value_of_key": {
+                                "status": "changed",
+                                "value": {
                                     "new_value": "so much",
                                     "old_value": ""
                                 }
@@ -47,34 +47,34 @@
                         }
                     },
                     "key": {
-                        "status_of_key": "unchanged",
-                        "value_of_key": "value"
+                        "status": "unchanged",
+                        "value": "value"
                     },
                     "ops": {
-                        "status_of_key": "added",
-                        "value_of_key": "vops"
+                        "status": "added",
+                        "value": "vops"
                     }
                 }
             }
         }
     },
     "group1": {
-        "status_of_key": "recursive",
-        "value_of_key": {
+        "status": "recursive",
+        "value": {
             "baz": {
-                "status_of_key": "changed",
-                "value_of_key": {
+                "status": "changed",
+                "value": {
                     "new_value": "bars",
                     "old_value": "bas"
                 }
             },
             "foo": {
-                "status_of_key": "unchanged",
-                "value_of_key": "bar"
+                "status": "unchanged",
+                "value": "bar"
             },
             "nest": {
-                "status_of_key": "changed",
-                "value_of_key": {
+                "status": "changed",
+                "value": {
                     "new_value": "str",
                     "old_value": {
                         "key": "value"
@@ -84,8 +84,8 @@
         }
     },
     "group2": {
-        "status_of_key": "removed",
-        "value_of_key": {
+        "status": "removed",
+        "value": {
             "abc": 12345,
             "deep": {
                 "id": 45
@@ -93,8 +93,8 @@
         }
     },
     "group3": {
-        "status_of_key": "added",
-        "value_of_key": {
+        "status": "added",
+        "value": {
             "deep": {
                 "id": {
                     "number": 45
