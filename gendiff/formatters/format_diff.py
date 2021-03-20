@@ -11,13 +11,13 @@ def format_diff(
     result_format,
     diff,
 ):
-    formatters = {
+    output_formats = {
         STYLISH_FORMATTER: format_diff_stylish,
         PLAIN_FORMATTER: format_diff_plain,
         JSON_FORMATTER: format_diff_json,
     }
 
-    formatter = formatters.get(result_format)
+    formatter = output_formats.get(result_format)
     if formatter is None:
         raise ValueError("Unknown format name: '{0}'".format(result_format))
     return formatter(diff)

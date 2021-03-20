@@ -3,21 +3,21 @@ from gendiff.building_diff.search_differences import build_diff
 from gendiff.formatters.format_diff import format_diff
 
 
-def generate_diff(file1, file2, formatter='stylish'):
+def generate_diff(file_path1, file_path2, output_format='stylish'):
 
-    data_of_file1 = get_file_data(
-        file1,
+    file1_data = get_file_data(
+        file_path1,
     )
-    data_of_file2 = get_file_data(
-        file2,
+    file2_data = get_file_data(
+        file_path2,
     )
 
     diff = build_diff(
-        data_of_file1,
-        data_of_file2,
+        file1_data,
+        file2_data,
     )
 
     return format_diff(
-        formatter,
+        output_format,
         diff,
     )
