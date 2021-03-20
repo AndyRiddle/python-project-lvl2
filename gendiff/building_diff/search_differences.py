@@ -15,22 +15,22 @@ def build_diff(dictionary1, dictionary2):
 
     for key in all_keys:
         if key not in dictionary2:
-            value_for_key = {
+            key_properties = {
                 STATUS_PROPERTY: REMOVED_STATUS,
                 VALUE_PROPERTY: dictionary1[key],
             }
         elif key not in dictionary1:
-            value_for_key = {
+            key_properties = {
                 STATUS_PROPERTY: ADDED_STATUS,
                 VALUE_PROPERTY: dictionary2[key],
             }
         else:
-            value_for_key = compare(
+            key_properties = compare(
                 dictionary1[key],
                 dictionary2[key],
             )
 
-        diff[key] = value_for_key
+        diff[key] = key_properties
 
     return diff
 

@@ -10,6 +10,8 @@ from gendiff.building_diff.search_differences import (ADDED_STATUS,
                                                       VALUE_PROPERTY)
 
 INDENT = '    '
+ADDED = '+'
+REMOVED = '-'
 
 
 def format_diff_stylish(diff, depth=1):
@@ -40,14 +42,14 @@ def get_formated_line(
     if status == ADDED_STATUS:
         return get_line_for_changed_key(
             get_indent(depth_for_changed),
-            '+',
+            ADDED,
             key,
             format_value(value, depth),
         )
     elif status == REMOVED_STATUS:
         return get_line_for_changed_key(
             get_indent(depth_for_changed),
-            '-',
+            REMOVED,
             key,
             format_value(value, depth),
         )
@@ -55,7 +57,7 @@ def get_formated_line(
         return '{0}\n{1}'.format(
             get_line_for_changed_key(
                 get_indent(depth_for_changed),
-                '-',
+                REMOVED,
                 key,
                 format_value(
                     value[OLD_VALUE], depth,
@@ -63,7 +65,7 @@ def get_formated_line(
             ),
             get_line_for_changed_key(
                 get_indent(depth_for_changed),
-                '+',
+                ADDED,
                 key,
                 format_value(
                     value[NEW_VALUE], depth,
@@ -107,18 +109,18 @@ def get_line_for_unchanged_key(indent, key, value_for_key):
 
 def format_value(value, depth):
     if isinstance(value, dict):
-        return format_unchanged_dict(value, depth)
+        return format_dict(value, depth)
     return format_simple_value(value)
 
 
-def format_unchanged_dict(dictionary, depth):
+def format_dict(dictionary, depth):
     diff_lines = ['{']
     for key, value_for_key in dictionary.items():
         if isinstance(value_for_key, dict):
             diff_lines.append(get_line_for_unchanged_key(
                 get_indent(depth + 1),
                 key,
-                format_unchanged_dict(value_for_key, depth + 1),
+                format_dict(value_for_key, depth + 1),
             ))
         else:
             diff_lines.append(
