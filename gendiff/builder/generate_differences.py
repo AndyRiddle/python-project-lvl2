@@ -1,5 +1,5 @@
-from gendiff.building_diff.get_file_data import get_file_data
-from gendiff.building_diff.search_differences import build_diff
+from gendiff.builder.get_file_data import get_file_data
+from gendiff.builder.search_differences import build_diff
 from gendiff.formatters.format_diff import format_diff
 
 

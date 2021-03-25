@@ -1,20 +1,23 @@
 import json
 
-from gendiff.building_diff.search_differences import (ADDED_STATUS,
-                                                      CHANGED_STATUS,
-                                                      NEW_VALUE, OLD_VALUE,
-                                                      RECURSIVE_STATUS,
-                                                      REMOVED_STATUS,
-                                                      STATUS_PROPERTY,
-                                                      UNCHANGED_STATUS,
-                                                      VALUE_PROPERTY)
+from gendiff.builder.search_differences import (ADDED_STATUS, CHANGED_STATUS,
+                                                NEW_VALUE, OLD_VALUE,
+                                                RECURSIVE_STATUS,
+                                                REMOVED_STATUS,
+                                                STATUS_PROPERTY,
+                                                UNCHANGED_STATUS,
+                                                VALUE_PROPERTY)
 
 INDENT = '    '
 ADDED = '+'
 REMOVED = '-'
 
 
-def format_diff_stylish(diff, depth=1):
+def format_diff_stylish(diff):
+    return get_diff_stylish(diff)
+
+
+def get_diff_stylish(diff, depth=1):
     diff_lines = ['{']
     sorted_keys = sorted(diff.keys())
 
@@ -76,8 +79,9 @@ def get_formated_line(
         return get_line_for_unchanged_key(
             get_indent(depth),
             key,
-            format_diff_stylish(
-                value, depth_for_unchanged,
+            get_diff_stylish(
+                value,
+                depth_for_unchanged,
             ),
         )
     elif status == UNCHANGED_STATUS:
