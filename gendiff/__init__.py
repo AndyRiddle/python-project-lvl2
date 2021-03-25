@@ -1,4 +1,4 @@
-from gendiff.building_diff.generate_differences import generate_diff
+from gendiff.builder.generate_differences import generate_diff
 # Error: Found backslash that is used for line breaking
 # Permissible to use break line
 from gendiff.formatters.format_diff import \
