@@ -1,6 +1,6 @@
 import os
 
-from gendiff.get_data.parse_data import parse_data
+from gendiff.data.parse import parse_data
 
 
 def get_file_data(path):

@@ -1,6 +1,6 @@
-from gendiff.builder.build_structure_differences import build_diff
+from gendiff.builder import build_diff
+from gendiff.data.get_file import get_file_data
 from gendiff.formatters.format_diff import format_diff
-from gendiff.get_data.get_file_data import get_file_data
 
 
 def generate_diff(file_path1, file_path2, output_format='stylish'):

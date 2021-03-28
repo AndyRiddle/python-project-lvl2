@@ -1,12 +1,8 @@
 import json
 
-from gendiff.builder.build_structure_differences import (ADDED_STATUS,
-                                                         CHANGED_STATUS,
-                                                         NEW_VALUE, OLD_VALUE,
-                                                         RECURSIVE_STATUS,
-                                                         REMOVED_STATUS,
-                                                         STATUS_PROPERTY,
-                                                         VALUE_PROPERTY)
+from gendiff.builder import (ADDED_STATUS, CHANGED_STATUS, NEW_VALUE,
+                             OLD_VALUE, RECURSIVE_STATUS, REMOVED_STATUS,
+                             STATUS_PROPERTY, VALUE_PROPERTY)
 
 
 def format_diff_plain(diff):
