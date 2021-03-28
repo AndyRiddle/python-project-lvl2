@@ -1,12 +1,13 @@
 import json
 
-from gendiff.builder.search_differences import (ADDED_STATUS, CHANGED_STATUS,
-                                                NEW_VALUE, OLD_VALUE,
-                                                RECURSIVE_STATUS,
-                                                REMOVED_STATUS,
-                                                STATUS_PROPERTY,
-                                                UNCHANGED_STATUS,
-                                                VALUE_PROPERTY)
+from gendiff.builder.build_structure_differences import (ADDED_STATUS,
+                                                         CHANGED_STATUS,
+                                                         NEW_VALUE, OLD_VALUE,
+                                                         RECURSIVE_STATUS,
+                                                         REMOVED_STATUS,
+                                                         STATUS_PROPERTY,
+                                                         UNCHANGED_STATUS,
+                                                         VALUE_PROPERTY)
 
 INDENT = '    '
 ADDED = '+'
